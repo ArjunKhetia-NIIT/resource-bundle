@@ -2,6 +2,7 @@ var _ = require('lodash');
 var json = require('./formatjson');
 var phrase = require('./phrase');
 var fs = require('fs');
+var async = require('async');
 
 var authToken, project, locale, fileformat;
 const args = process.argv.slice(2);
@@ -38,14 +39,14 @@ phrase.getProjects(authToken, projectURL)
                                 if (locale.indexOf(element['code']) !== -1) {
                                     const localeId = element['id'];
                                     phrase.downloadFile(authToken, projectURL, projectId, localeId, fileformat, encoding)
-                                        .then((data) => {
+                                        .then(async (data) => {
                                             if (fileformat === 'properties') {
                                                 fs.writeFile(element['code']+'.properties', data, encoding, () => {
                                                     console.log(element['code']+'.properties File Generated');
                                                 });
                                             } else if (fileformat === 'nested_json') {
                                                 const object = JSON.parse(data);
-                                                json.formatjson(object);
+                                                await json.formatjson(object);
                                                 fs.writeFile(element['code']+'.json', JSON.stringify(object), encoding, () => {
                                                     console.log(element['code']+'.json File Generated');
                                                 });
