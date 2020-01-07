@@ -1,0 +1,25 @@
+{
+  "name": "resource-bundle",
+  "version": "1.0.0",
+  "description": "Resource Bundle For Language Files",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ArjunKhetia-NIIT/resource-bundle.git"
+  },
+  "author": "Arjun Khetia <arjunj@ilimi.in>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArjunKhetia-NIIT/resource-bundle/issues"
+  },
+  "homepage": "https://github.com/ArjunKhetia-NIIT/resource-bundle#readme",
+  "dependencies": {
+    "async": "^3.1.0",
+    "fs": "0.0.1-security",
+    "lodash": "^4.17.15",
+    "request-promise": "^4.2.5"
+  }
+}
