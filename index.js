@@ -50,6 +50,10 @@ phrase.getProjects(authToken, projectURL)
                                                 fs.writeFile(element['code']+'.json', JSON.stringify(object), encoding, () => {
                                                     console.log(element['code']+'.json File Generated');
                                                 });
+                                            } else {
+                                                fs.writeFile(element['code']+'.'+fileformat, data, encoding, () => {
+                                                    console.log(element['code']+'.'+fileformat+' File Generated');
+                                                });
                                             }
                                         })
                                         .catch((err) => {
