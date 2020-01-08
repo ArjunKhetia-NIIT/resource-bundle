@@ -22,5 +22,5 @@ To generate resource bundle run the command with 4 parameters as per your requir
 (Note: It supports "UTF-8", "UTF-16" and "ISO-8859-1" Formats.)
 
 ```bash
-$ node index.js -authToken='Basic YXJqdW3raGV1aWE7QXJqdW9AMTk1MA==' -project='DIKSHA Portal' -locale='en,gu,hi,ur,bn' -fileformat='properties'
+$ node index.js -authToken='Basic YXJqdW3raGV1aWE7QXJqdW9AMTk1MA==' -project='Project Name' -locale='en,gu,hi,ur,bn' -fileformat='json'
 ```
