@@ -40,7 +40,9 @@ phrase.getProjects(authToken, projectURL)
                                     const localeId = element['id'];
                                     phrase.downloadFile(authToken, projectURL, projectId, localeId, fileformat, encoding)
                                         .then(async (data) => {
-                                            if (fileformat === 'nested_json' || fileformat === 'json') {
+                                            if (fileformat === 'nested_json' || fileformat === 'json' || fileformat === 'react_simple_json'
+                                            || fileformat === 'react_nested_json' || fileformat === 'simple_json' || fileformat === 'go_i18n'
+                                            || fileformat === 'angular_translate' || fileformat === 'i18next') {
                                                 const object = JSON.parse(data);
                                                 await json.formatjson(object);
                                                 fs.writeFile(element['code']+'.json', JSON.stringify(object), encoding, () => {
