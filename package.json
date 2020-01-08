@@ -1,5 +1,5 @@
 {
-  "name": "resource-bundle",
+  "name": "sunbird-resource-bundle",
   "version": "1.0.0",
   "description": "Resource Bundle For Language Files",
   "main": "index.js",
