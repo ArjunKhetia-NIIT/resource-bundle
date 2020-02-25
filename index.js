@@ -3,12 +3,16 @@ var json = require('./formatjson');
 var phrase = require('./phrase');
 var fs = require('fs');
 var async = require('async');
-
+const distFolder = 'dist';
 var authToken, project, locale, fileformat;
 const args = process.argv.slice(2);
 const projectURL = 'https://api.phrase.com/v2/projects';
 const encoding = 'UTF-8'; 
 // Valid options are "UTF-8", "UTF-16" and "ISO-8859-1"
+
+fs.mkdir(distFolder, { recursive: true }, (err) => {
+    if (err) throw err;
+});
 
 _.forEach(args, function (arg) {
     if (arg.includes('-authToken')) {
@@ -46,11 +50,11 @@ if (authToken && project && locale && fileformat) {
                                                 || fileformat === 'angular_translate' || fileformat === 'i18next') {
                                                     const object = JSON.parse(data);
                                                     await json.formatjson(object);
-                                                    fs.writeFile(element['code']+'.json', JSON.stringify(object), encoding, () => {
+                                                    fs.writeFile(distFolder + '/' + element['code']+'.json', JSON.stringify(object), encoding, () => {
                                                         console.log(element['code']+'.json File Generated');
                                                     });
                                                 } else {
-                                                    fs.writeFile(element['code']+'.'+fileformat, data, encoding, () => {
+                                                    fs.writeFile(distFolder + '/' + element['code']+'.'+fileformat, data, encoding, () => {
                                                         console.log(element['code']+'.'+fileformat+' File Generated');
                                                     });
                                                 }
