@@ -24,3 +24,5 @@ To generate resource bundle run the command with 4 parameters as per your requir
 ```bash
 $ node index.js -authToken='Basic YXJqdW3raGV1aWE7QXJqdW9AMTk1MA==' -project='Project Name' -locale='en,gu,hi,ur,bn' -fileformat='json'
 ```
+
+Output files will be generated inside "sunbirdresourcebundle" folder.
