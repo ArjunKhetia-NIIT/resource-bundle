@@ -3,7 +3,7 @@ var json = require('./formatjson');
 var phrase = require('./phrase');
 var fs = require('fs');
 var async = require('async');
-const distFolder = 'dist';
+const distFolder = 'sunbirdresourcebundle';
 var authToken, project, locale, fileformat;
 const args = process.argv.slice(2);
 const projectURL = 'https://api.phrase.com/v2/projects';
