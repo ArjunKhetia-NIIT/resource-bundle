@@ -1,3 +1,4 @@
+var _ = require('lodash');
 const formatjson = (object) => {
     for (let key in object) {
         if(key.includes('\r\n') || key.includes('\r') || key.includes('\n') || key.includes('\t')){
@@ -7,7 +8,11 @@ const formatjson = (object) => {
             key = key.replace('\r', '');
             key = key.replace('\n', '');
             key = key.replace('\t', '');
-            object[key] = objectValue;
+            if(_.has(object, key)) {
+                object[key] = _.mergeWith(object[key], objectValue, customizer);
+            } else {
+                object[key] = objectValue;
+            }
         }
         if (object.hasOwnProperty(key) && (typeof object[key] === "object")) {
             formatjson(object[key]);
@@ -22,5 +27,11 @@ const formatjson = (object) => {
     }
     return object;
 };
+
+function customizer(objValue, srcValue) {
+    if (_.isArray(objValue)) {
+        return objValue.concat(srcValue);
+    }
+}
 
 exports.formatjson = formatjson;
